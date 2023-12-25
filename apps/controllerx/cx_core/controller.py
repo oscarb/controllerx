@@ -152,7 +152,7 @@ class Controller(Hass, Mqtt):  # type: ignore[misc]
             custom=self.args.get("action_delta"),
             default=DEFAULT_ACTION_DELTA,
         )
-        self.action_times = defaultdict(lambda: 0.0)
+        self.action_times = defaultdict(float)
 
         # Previous state
         self.previous_states = self.get_mapping_per_action(
@@ -168,7 +168,7 @@ class Controller(Hass, Mqtt):  # type: ignore[misc]
         self.multiple_click_delay = self.args.get(
             "multiple_click_delay", DEFAULT_MULTIPLE_CLICK_DELAY
         )
-        self.multiple_click_action_times = defaultdict(lambda: 0.0)
+        self.multiple_click_action_times = defaultdict(float)
         self.click_counter = Counter()
         self.multiple_click_action_delay_tasks = defaultdict(lambda: None)
 
